@@ -1,6 +1,7 @@
 package com.academysmart.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +38,9 @@ public class EmployeesServlet extends HttpServlet {
 		} catch (ServletException | IncorrectEmailException e) {
 			String a = e.toString().substring(e.toString().indexOf(":") + 2);
 			request.setAttribute("errMsg", a);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		doGet(request, response);
 	}

@@ -29,6 +29,7 @@
 				</tr>
 			</table>
 			<input type="submit" name="addEmp" value="Confirm">
+		</fieldset>
 	</form>
 	<div class="errMsg">
 		<c:out value="${errMsg}" />

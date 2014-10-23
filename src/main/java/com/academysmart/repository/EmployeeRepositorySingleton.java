@@ -41,7 +41,7 @@ public class EmployeeRepositorySingleton {
 		//This method should check that email is not used by other employees 
 		 String user = "Makarov";//Логин пользователя
 	        String password = "12251991";//Пароль пользователя
-	        String url = "jdbc:oracle:thin:@localhost:1521:Makarov";//URL адрес
+	        String url = "jdbc:oracle:thin:@localhost:1521/XE";//URL адрес
 	        String driver = "oracle.jdbc.driver.OracleDriver";//Имя драйвера
 	        try {
 	             Class.forName(driver);//Регистрируем драйвер
@@ -53,9 +53,9 @@ public class EmployeeRepositorySingleton {
 	        try{
 	             c = DriverManager.getConnection(url, user, password);//Установка соединения с БД
 	             Statement st = (Statement) c.createStatement();//Готовим запрос
-	             ResultSet rs = ((java.sql.Statement) st).executeQuery("select * from Employee");//Выполняем запрос к БД, результат в переменной rs
+	             ResultSet rs = st.executeQuery("select * from Employee");//Выполняем запрос к БД, результат в переменной rs
 	             while(rs.next()){
-	                  System.out.println(rs.getString("Login"));//Последовательно для каждой строки выводим значение из колонки ColumnName
+	                  System.out.println(rs.getString(2));
 	             }
 	        } catch(Exception e){
 	             e.printStackTrace();

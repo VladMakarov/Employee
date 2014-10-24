@@ -2,6 +2,8 @@ package com.academysmart.repositorty;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 
 import org.junit.Assert;
@@ -27,7 +29,7 @@ public class EmployeeRepositorySingletonTest {
 
 	@Test(expected = IncorrectEmailException.class)
 	public void testAddEmployeWithIncorrectEmail() throws ServletException,
-			IncorrectEmailException {
+			IncorrectEmailException, SQLException {
 		EmployeeRepositorySingleton.getRepository().addEmployee("Иван",
 				"Иванов", "ivanovICH@mail.ru");
 		EmployeeRepositorySingleton.getRepository().addEmployee("Иван",

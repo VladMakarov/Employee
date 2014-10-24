@@ -3,6 +3,7 @@ package com.academysmart.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,11 @@ import com.academysmart.repository.EmployeeRepositorySingleton;
 @WebServlet("/MyServlet.html")
 public class EmployeesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	public void init(ServletConfig conf) throws ServletException{
+		super.init(conf);
+		EmployeeRepositorySingleton.getAllEmployeeWhenStartDB();
+	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {

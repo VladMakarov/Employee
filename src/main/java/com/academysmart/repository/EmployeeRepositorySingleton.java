@@ -22,15 +22,7 @@ public class EmployeeRepositorySingleton {
 	static String url = "jdbc:oracle:thin:@localhost:1521/XE";
 	static String driver = "oracle.jdbc.driver.OracleDriver";
 
-	// public EmployeeRepositorySingleton() {
-	// Employee emp = new Employee();
-	// emp.setId("ID");
-	// emp.setName("Name");
-	// emp.setSurName("Surname");
-	// emp.setEmail("E-mail");
-	// employee.add(emp);
-	// }
-
+	
 	public static EmployeeRepositorySingleton getRepository() {
 		// TODO implement method that returns repository instance
 		if (repository == null) {
@@ -52,7 +44,7 @@ public class EmployeeRepositorySingleton {
 		try {
 			connect = DriverManager.getConnection(url, user, password);
 			statement = (Statement) connect.createStatement();
-			choiseResult = statement.executeQuery("SELECT * FROM Employee");
+			choiseResult = statement.executeQuery("SELECT * FROM Employee ORDER BY id");
 			while (choiseResult.next()) {
 				newEmployee = new Employee();
 				newEmployee.setId(choiseResult.getString("id"));
@@ -86,7 +78,6 @@ public class EmployeeRepositorySingleton {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		Employee newEmployee = null;
 		Connection connect = null;
 		Statement statement = null;
 		ResultSet choiseResult = null;
@@ -116,17 +107,17 @@ public class EmployeeRepositorySingleton {
 				e.printStackTrace();
 			}
 		}
-		newEmployee = new Employee();
+		Employee newEmployee = new Employee();
+		newEmployee.setId(String.valueOf(id));
+		newEmployee.setName(fname);
+		newEmployee.setSurName(lname);
+		newEmployee.setEmail(email);
 		for (Employee i : employees) {
 			if (i.getEmail().equals(newEmployee.getEmail())) {
 				throw new IncorrectEmailException(
 						"This email is not available!");
 			}
 		}
-		newEmployee.setId(String.valueOf(id));
-		newEmployee.setName(fname);
-		newEmployee.setSurName(lname);
-		newEmployee.setEmail(email);
 		employees.add(newEmployee);
 		
 	}

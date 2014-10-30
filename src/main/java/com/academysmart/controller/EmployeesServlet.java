@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.academysmart.exception.IncorrectEmailException;
 import com.academysmart.repository.EmployeeRepositorySingleton;
 
-@WebServlet("/MyServlet.html")
+@WebServlet("/index.html")
 public class EmployeesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

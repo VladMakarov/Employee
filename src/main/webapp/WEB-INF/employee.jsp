@@ -5,12 +5,14 @@
 <html>
 <head>
 <title>Servlet task</title>
-<script src="js/jquery.min.js"></script>
-<script src="js/script.js"></script>
-<link rel="stylesheet" href="css/style.css">
+
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
+<script src="<c:url value="/resources/js/script.js" />"></script>
+
 </head>
 <body>
-	<form action="index.html" method="post">
+	<form method="POST" modelAttribute="employee">
 		<!-- Create fields for new employee -->
 		<txt> <b>Enter your Name, Surname and E-mail.</b></txt>
 		<fieldset>
@@ -36,7 +38,7 @@
 	</div>
 	<div class="empTable">
 		<c:choose>
-			<c:when test="${empty applicationScope.employees}">
+			<c:when test="${empty employees}">
 				<!-- Inform user that there's no employee yet -->
 				<c:out value="Employee list is empty"></c:out>
 			</c:when>
@@ -48,7 +50,7 @@
 					<td> Surname</td>
 					<td> E-Mail</td>
 				</tr>
-				<c:forEach var="employee" items="${applicationScope.employees}">
+				<c:forEach var="employee" items="${employees}">
 					<tr>
 						<td><c:out value="${employee.id}"></c:out></td>
 						<td><c:out value="${employee.name}"></c:out></td>

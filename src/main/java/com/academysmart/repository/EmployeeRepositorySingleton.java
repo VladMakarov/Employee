@@ -90,6 +90,13 @@ public class EmployeeRepositorySingleton {
 				id = 1 + Integer.parseInt(choiseResult.getString("id"));
 			}
 			choiseResult = statement.executeQuery("SELECT email FROM Employee");
+			while (choiseResult.next()) {
+				if (choiseResult.getString("email").equals(email)) {
+					throw new IncorrectEmailException(
+							"This email is not available!");
+				}
+			}
+			
 			preperedStatement = connect.prepareStatement("insert into employee "
 							+ "values(?, ?, ?, ?)");
 			preperedStatement.setInt(1, id);
@@ -123,7 +130,6 @@ public class EmployeeRepositorySingleton {
 	}
 
 	public List<Employee> getAllEmployees() {
-		// TODO implement method that returns list of all employees
 		return employees;
 	}
 }

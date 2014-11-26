@@ -17,8 +17,8 @@ import com.academysmart.model.Employee;
 public class EmployeeRepositorySingleton {
 	static EmployeeRepositorySingleton repository;
 	static List<Employee> employees = new ArrayList<Employee>();
-	static String user = "Makarov";
-	static String password = "12251991";
+	static String user = ""; //Username deleted.
+	static String password = ""; //Password deleted.
 	static String url = "jdbc:oracle:thin:@localhost:1521/XE";
 	static String driver = "oracle.jdbc.driver.OracleDriver";
 

@@ -17,8 +17,8 @@ public class EmployeeRepositorySingletonTest {
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		EmployeeRepositorySingleton.getRepository().addEmployee("Иван",
-				"Иванов", "ivanov@mail.ru");
+		EmployeeRepositorySingleton.getRepository().addEmployee("Ivan",
+				"Ivanov", "ivanov@mail.ru");
 	}
 
 	@Test
@@ -30,10 +30,10 @@ public class EmployeeRepositorySingletonTest {
 	@Test(expected = IncorrectEmailException.class)
 	public void testAddEmployeWithIncorrectEmail() throws ServletException,
 			IncorrectEmailException, SQLException {
-		EmployeeRepositorySingleton.getRepository().addEmployee("Иван",
-				"Иванов", "ivanovICH@mail.ru");
-		EmployeeRepositorySingleton.getRepository().addEmployee("Иван",
-				"Иванов", "ivanovICH@mail.ru");
+		EmployeeRepositorySingleton.getRepository().addEmployee("Ivan",
+				"Ivanov", "ivanovICH@mail.ru");
+		EmployeeRepositorySingleton.getRepository().addEmployee("Ivan",
+				"Ivanov", "ivanovICH@mail.ru");
 	}
 
 }
